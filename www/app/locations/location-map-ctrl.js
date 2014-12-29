@@ -21,7 +21,6 @@
 
         function getLeagueDataSuccess(data) {
             vm.location = _.find(data.locations, {id: vm.locationId});
-            console.dir(vm.location)
             vm.marker = {
                 options: {
                     labelContent: vm.location.name + "<br />(Tap for directions)",
@@ -42,5 +41,5 @@
         vm.locationClicked = function (marker) {
             window.location = "geo:" + marker.coords.latitude + ',' + marker.coords.longitude + ";u=35";
         };
-    };
+    }
 })();
