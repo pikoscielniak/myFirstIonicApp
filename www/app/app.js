@@ -1,4 +1,4 @@
-angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "uiGmapgoogle-maps"])
+angular.module("eliteApp", ["ngCordova", "ionic", "angular-data.DSCacheFactory", "uiGmapgoogle-maps"])
 
     .run(function ($ionicPlatform, DSCacheFactory) {
         $ionicPlatform.ready(function () {
