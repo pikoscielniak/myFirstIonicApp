@@ -119,6 +119,14 @@ angular.module("eliteApp", ["ngCordova", "ionic", "angular-data.DSCacheFactory",
                     }
                 }
             })
+            .state('app.vibration', {
+                url: "/vibration",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/vibration/vibration.html"
+                    }
+                }
+            })
             .state('app.dialogs', {
                 url: "/dialogs",
                 views: {
