@@ -14,10 +14,10 @@ angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "uiGmapgoogl
 
             DSCacheFactory("leagueDataCache", {
                 storageMode: "localStorage",
-                maxAge: 15000,
+                maxAge: 600000,
                 deleteOnExpire: "aggressive"
             });
-            DSCacheFactory("leaguesCache", {storageMode: "localStorage", maxAge: 15000, deleteOnExpire: "aggressive"});
+            DSCacheFactory("leaguesCache", {storageMode: "localStorage", maxAge: 600000, deleteOnExpire: "aggressive"});
             DSCacheFactory("myTeamsCache", {storageMode: "localStorage"});
             DSCacheFactory("staticCache", {storageMode: "localStorage"});
         });
