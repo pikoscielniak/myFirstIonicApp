@@ -118,6 +118,14 @@ angular.module("eliteApp", ["ngCordova", "ionic", "angular-data.DSCacheFactory",
                         templateUrl: "app/rules/rules.html"
                     }
                 }
+            })
+            .state('app.dialogs', {
+                url: "/dialogs",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/dialogs/dialogs.html"
+                    }
+                }
             });
 
         // if none of the above states are matched, use this as the fallback
