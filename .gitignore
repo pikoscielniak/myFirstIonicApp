@@ -6,3 +6,4 @@ platforms/
 plugins/
 .idea
 www/lib/ionic/.sass-cache/
+www/lib/ngCordova

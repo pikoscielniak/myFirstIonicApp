@@ -6,6 +6,7 @@
     "lodash": "~2.4.1",
     "angular-cache": "~3.2.4",
     "angular-google-maps": "~2.0.12",
-    "showdown": "~0.3.1"
+    "showdown": "~0.3.1",
+    "ngCordova": "~0.1.9-alpha"
   }
 }
