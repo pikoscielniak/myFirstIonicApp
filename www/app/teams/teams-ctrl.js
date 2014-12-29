@@ -16,5 +16,5 @@
 
         vm.loadList(false);
 
-    };
+    }
 })();

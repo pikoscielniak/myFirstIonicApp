@@ -24,14 +24,13 @@
             for (var i = 0; i < keys.length; i++) {
                 var team = self.myTeamsCache.get(keys[i]);
                 teams.push(team);
-            };
+            }
 
             return teams;
         }
 
         function isFollowingTeam(teamId){
-            var team = self.myTeamsCache.get(teamId);
-            return team;
+            return self.myTeamsCache.get(teamId);
         }
 
         return {

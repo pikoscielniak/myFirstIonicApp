@@ -22,7 +22,7 @@
             vm.games = _.chain(data.games)
                 .filter(isTeamInGame)
                 .map(function (item) {
-                    var isTeam1 = (item.team1Id === vm.teamId ? true : false);
+                    var isTeam1 = (item.team1Id === vm.teamId);
                     var opponentName = isTeam1 ? item.team2 : item.team1;
                     var scoreDisplay = getScoreDisplay(isTeam1, item.team1Score, item.team2Score);
                     return {
@@ -89,5 +89,5 @@
                 return "";
             }
         }
-    };
+    }
 })();
