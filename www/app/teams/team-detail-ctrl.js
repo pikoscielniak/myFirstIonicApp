@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('eliteApp').controller('TeamDetailCtrl', ['$stateParams', 'eliteApi', TeamDetailCtrl]);
+    angular.module('eliteApp').controller('TeamDetailCtrl', ['$stateParams', 'eliteApi', '$ionicPopup', TeamDetailCtrl]);
 
-    function TeamDetailCtrl($stateParams, eliteApi) {
+    function TeamDetailCtrl($stateParams, eliteApi, $ionicPopup) {
         var vm = this;
 
         vm.teamId = Number($stateParams.id);
@@ -13,7 +13,7 @@
 
         var team = _.chain(data.teams)
             .flatten("divisionTeams")
-            .find({ "id": vm.teamId })
+            .find({"id": vm.teamId})
             .value();
 
         vm.teamName = team.name;
@@ -38,30 +38,30 @@
 
         vm.teamStanding = _.chain(data.standings)
             .flatten("divisionStandings")
-            .find({ "teamId": vm.teamId })
+            .find({"teamId": vm.teamId})
             .value();
 
         vm.following = false;
 
-        vm.toggleFollow = function(){
+        vm.toggleFollow = function () {
 
             if (vm.following) {
                 var confirmPopup = $ionicPopup.confirm({
                     title: 'Unfollow?',
                     template: 'Are you sure you want to unfollow?'
                 });
-                confirmPopup.then(function(res) {
-                    if(res) {
+                confirmPopup.then(function (res) {
+                    if (res) {
                         vm.following = !vm.following;
                     }
                 });
-            } else{
+            } else {
                 vm.following = !vm.following;
             }
         };
 
 
-        function isTeamInGame(item){
+        function isTeamInGame(item) {
             return item.team1Id === vm.teamId || item.team2Id === vm.teamId;
         }
 
