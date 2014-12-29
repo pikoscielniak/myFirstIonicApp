@@ -1,5 +1,12 @@
-<ion-view title="Team Details" ng-controller="TeamDetailCtrl as vm">
+<ion-view title="Team Details" title="{{vm.teamName}}" ng-controller="TeamDetailCtrl as vm">
     <ion-content class="has-header">
+
+        <div class="card">
+            <div class="item">
+                <h2>Record: {{vm.teamStanding.wins}}--{{vm.teamStanding.losses}}</h2>
+            </div>
+        </div>
+
         <div class="list">
             <a class="item item-icon-right" ng-repeat="game in vm.games" ui-sref="app.game({id: game.gameId})">
                 <div class="row">
@@ -10,6 +17,7 @@
                     </div>
                     <div class="col col-center">
                         <h3>{{game.homeAway}} {{game.opponent}}</h3>
+
                         <p>{{game.location }}</p>
                     </div>
                     <div class="col-20 col-center">
