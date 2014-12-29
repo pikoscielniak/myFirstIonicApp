@@ -1,15 +1,15 @@
 (function () {
     'use strict';
 
-    angular.module('eliteApp').controller('TeamsCtrl', ['eliteApi', TeamsCtrl]);
+    angular.module('eliteApp').controller('TeamsCtrl', ['$scope', 'eliteApi', TeamsCtrl]);
 
-    function TeamsCtrl(eliteApi) {
+    function TeamsCtrl($scope, eliteApi) {
         var vm = this;
 
-        vm.loadList = function(forceRefresh) {
-            eliteApi.getLeagueData(forceRefresh).then(function(data) {
+        vm.loadList = function (forceRefresh) {
+            eliteApi.getLeagueData(forceRefresh).then(function (data) {
                 vm.teams = data.teams;
-            }).finally(function(){
+            }).finally(function () {
                 $scope.$broadcast('scroll.refreshComplete');
             });
         };

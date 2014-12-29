@@ -39,24 +39,29 @@
             return self.staticCache.get("currentLeagueId");
         }
 
-        function doGet(url, getDataFromCache, setDataInCache, showLoading) {
+        function doGet(options) {
             var deferred = $q.defer();
 
-            var dataFromCache = getDataFromCache ? getDataFromCache() : null;
+            var tryGetFromCache = !options.forceRefresh;
+
+            var dataFromCache = null;
+            if (tryGetFromCache) {
+                dataFromCache = options.getDataFromCache ? options.getDataFromCache() : null;
+            }
 
             if (dataFromCache) {
                 console.log("Found data inside cache", dataFromCache);
                 deferred.resolve(dataFromCache);
             } else {
-                if (showLoading) {
+                if (options.showLoading) {
                     $ionicLoading.show({template: 'Loading...'});
                 }
-                $http.get(url)
+                $http.get(options.url)
                     .success(function (data) {
                         console.log("Received data via HTTP");
                         $ionicLoading.hide();
-                        if (setDataInCache) {
-                            setDataInCache(data);
+                        if (options.setDataInCache) {
+                            options.setDataInCache(data);
                         }
                         deferred.resolve(data);
                     })
@@ -80,7 +85,13 @@
         }
 
         function getLeagues(showLoading) {
-            return doGet('http://elite-schedule.net/api/leaguedata', getLeaguesFromCache, setLeaguesInCache, showLoading);
+            var options = {
+                url: 'http://elite-schedule.net/api/leaguedata',
+                getDataFromCache: getLeaguesFromCache,
+                setDataInCache: setLeaguesInCache,
+                showLoading: showLoading
+            };
+            return doGet(options);
         }
 
         function getLeaguesWithLoading() {
@@ -99,13 +110,19 @@
             return self.leagueDataCache.put(getLeagueDataCacheKey(), data);
         }
 
-        function getLeagueData(showLoading) {
-            return doGet("http://elite-schedule.net/api/leaguedata/" + getLeagueId(),
-                getLeagueDataFromCache, setLeagueDataInCache, showLoading);
+        function getLeagueData(forceRefresh, showLoading) {
+            var options = {
+                url: "http://elite-schedule.net/api/leaguedata/" + getLeagueId(),
+                getDataFromCache: getLeagueDataFromCache,
+                setDataInCache: setLeagueDataInCache,
+                forceRefresh: forceRefresh,
+                showLoading: showLoading
+            };
+            return doGet(options);
         }
 
-        function getLeagueDataWithLoading() {
-            return getLeagueData(true);
+        function getLeagueDataWithLoading(forceRefresh) {
+            return getLeagueData(forceRefresh, true);
         }
 
         return {
