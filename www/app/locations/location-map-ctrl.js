@@ -38,5 +38,9 @@
             vm.map.center.latitude = vm.location.latitude;
             vm.map.center.longitude = vm.location.longitude;
         }
+
+        vm.locationClicked = function (marker) {
+            window.location = "geo:" + marker.coords.latitude + ',' + marker.coords.longitude + ";u=35";
+        };
     };
 })();
