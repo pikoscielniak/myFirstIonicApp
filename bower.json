@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.0.0-beta.14",
     "lodash": "~2.4.1",
     "angular-cache": "~3.2.4",
-    "angular-google-maps": "~2.0.12"
+    "angular-google-maps": "~2.0.12",
+    "showdown": "~0.3.1"
   }
 }
