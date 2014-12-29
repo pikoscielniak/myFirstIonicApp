@@ -127,6 +127,38 @@ angular.module("eliteApp", ["ngCordova", "ionic", "angular-data.DSCacheFactory",
                     }
                 }
             })
+            .state('app.network', {
+                url: "/network",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/network/network.html"
+                    }
+                }
+            })
+            .state('app.device', {
+                url: "/device",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/device/device.html"
+                    }
+                }
+            })
+            .state('app.camera', {
+                url: "/camera",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/camera/camera.html"
+                    }
+                }
+            })
+            .state('app.barcode', {
+                url: "/barcode",
+                views: {
+                    'mainContent': {
+                        templateUrl: "app/barcode-scanner/barcode-scanner.html"
+                    }
+                }
+            })
             .state('app.dialogs', {
                 url: "/dialogs",
                 views: {
